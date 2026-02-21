@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const App());
-}
+// void main() {
+//   runApp(const App());
+// }
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -47,7 +47,8 @@ class _MyLargeTitleState extends State<MyLargeTitle> {
   }
 
   @override
-  void dispose() { // 위젯이 스크린에서 제거될때
+  void dispose() {
+    // 위젯이 스크린에서 제거될때
     // TODO: implement dispose
     super.dispose();
   }
