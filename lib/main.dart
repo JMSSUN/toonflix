@@ -1,66 +1,27 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:toonflix/screens/home_screen.dart';
 
-// void main() {
-//   runApp(const App());
-// }
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..userAgent =
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36';
+  }
+}
 
-class App extends StatefulWidget {
+void main() {
+  HttpOverrides.global = MyHttpOverrides();
+  runApp(const App());
+}
+
+class App extends StatelessWidget {
   const App({super.key});
 
   @override
-  State<App> createState() => _MyWidgetState();
-}
-
-class _MyWidgetState extends State<App> {
-  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        textTheme: const TextTheme(titleLarge: TextStyle(color: Colors.red)),
-      ),
-      home: const Scaffold(
-        backgroundColor: Color(0xFFF4EDDB),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [MyLargeTitle()],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class MyLargeTitle extends StatefulWidget {
-  const MyLargeTitle({super.key});
-
-  @override
-  State<MyLargeTitle> createState() => _MyLargeTitleState();
-}
-
-class _MyLargeTitleState extends State<MyLargeTitle> {
-  int count = 0;
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    // 위젯이 스크린에서 제거될때
-    // TODO: implement dispose
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'My Large Title',
-      style: TextStyle(
-        fontSize: 30,
-        color: Theme.of(context).textTheme.titleLarge!.color,
-      ),
-    );
+    return MaterialApp(home: HomeScreen());
   }
 }
