@@ -45,7 +45,7 @@ class ApiServices {
     String id,
   ) async {
     List<WebtoonEpisodeModel> episodeInstances = [];
-    final url = Uri.parse('$baseUrl/$id');
+    final url = Uri.parse('$baseUrl/$id/episodes');
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
